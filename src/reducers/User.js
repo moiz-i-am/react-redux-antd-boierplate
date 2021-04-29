@@ -3,6 +3,7 @@ const initialState = {
   login: false,
   loading: false,
   error: null,
+  loggedIn: false,
   currentUser: {
     data: null,
     loading: false,
@@ -53,6 +54,7 @@ const userReducer = (
         ...initialState,
         type,
         loading: false,
+        loggedIn: false,
       };
 
     case "LOGIN_SUCCESS":
@@ -63,6 +65,7 @@ const userReducer = (
         loading: false,
         type,
         payload,
+        loggedIn: true,
         currentUser: {
           ...state.currentUser,
           loading: false,
@@ -93,7 +96,42 @@ const userReducer = (
         loading: false,
         type,
       };
-  
+
+    case "GET_CURRENT_USER":
+      return {
+        ...state,
+        currentUser: {
+          ...state.currentUser,
+          loading: true,
+          error: null,
+          data: null,
+        },
+      };
+
+    case "GET_CURRENT_USER_SUCCESS":
+      return {
+        ...state,
+        success: true,
+        loading: false,
+        type,
+        payload,
+        currentUser: {
+          ...state.currentUser,
+          loading: false,
+          data,
+        },
+      };
+
+    case "GET_CURRENT_USER_FAIL":
+      return {
+        ...state,
+        currentUser: {
+          ...state.currentUser,
+          loading: false,
+          error,
+        },
+      };
+
     default:
       return state;
   }

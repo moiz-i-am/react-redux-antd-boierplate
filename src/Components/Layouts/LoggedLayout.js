@@ -2,13 +2,13 @@ import React from "react";
 import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 import { Layout, Menu, Avatar, message, Drawer, Button } from "antd";
-import { useMutation } from "@apollo/react-hooks";
+// import { useMutation } from "@apollo/react-hooks";
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 
 import { withRouter } from "react-router";
-import { mutations } from "../../graphql/graphql";
-import actions from "../../store/actions/actions";
+// import { mutations } from "../../graphql/graphql";
+// import actions from "../../store/actions/actions";
 
 import "./Layouts.css";
 
@@ -17,20 +17,20 @@ const { Header, Footer, Content } = Layout;
 
 const LoggedLayout = (props) => {
   const [visibleDrawer, setVisibleDrawer] = React.useState(false);
-  const [LogOut] = useMutation(mutations.LOG_OUT);
+  // const [LogOut] = useMutation(mutations.LOG_OUT);
   console.log(visibleDrawer);
   const handleLogOut = (e) => {
-    if (e.key === "LogOut") {
-      props.removeAuthUser();
-      props.setFirstAuthState(false, null);
-      props.logOut();
-      LogOut()
-        .then((res) => {
-          props.history.push("/login");
-          message.success("Logged out successfully");
-        })
-        .catch((err) => console.log(err));
-    }
+    // if (e.key === "LogOut") {
+    //   props.removeAuthUser();
+    //   props.setFirstAuthState(false, null);
+    //   props.logOut();
+    //   LogOut()
+    //     .then((res) => {
+    //       props.history.push("/login");
+    //       message.success("Logged out successfully");
+    //     })
+    //     .catch((err) => console.log(err));
+    // }
   };
   const { location } = props.history;
   const { user } = props;
@@ -225,20 +225,20 @@ const LoggedLayout = (props) => {
 
 const mapStateToProps = (state) => {
   return {
-    user: state.auth.user,
+    user: state.user.currentUser,
     loggedIn: state.auth.loggedIn,
   };
 };
 
 const mapDispatchToProps = (dispatch) => {
-  return bindActionCreators(
-    {
-      removeAuthUser: actions.removeAuthUser,
-      setFirstAuthState: actions.setFirstAuthState,
-      logOut: actions.logOut,
-    },
-    dispatch
-  );
+  // return bindActionCreators(
+  //   {
+  //     removeAuthUser: actions.removeAuthUser,
+  //     setFirstAuthState: actions.setFirstAuthState,
+  //     logOut: actions.logOut,
+  //   },
+  //   dispatch
+  // );
 };
 
 LoggedLayout.propTypes = {

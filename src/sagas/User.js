@@ -14,7 +14,7 @@ import { doGet, doPost } from "../utils/request";
 
 function* dosignUp({ obj, history }) {
   try {
-    const response = yield doPost("/users/signup", obj);
+    const response = yield doPost("/user/signup", obj);
     yield put(signUpSuccess(response.data));
   } catch (err) {
     const delay = (time) => new Promise((resolve) => setTimeout(resolve, time));
@@ -26,7 +26,7 @@ function* dosignUp({ obj, history }) {
 
 function* doLogIn({ obj, history, redirectUrl }) {
   try {
-    const response = yield doPost("/users/login", obj);
+    const response = yield doPost("/user/login", obj);
     yield put(logInSuccess(response.data));
 
     if (redirectUrl) {
@@ -53,7 +53,7 @@ function* doLogIn({ obj, history, redirectUrl }) {
 
 function* doLogOut() {
   try {
-    yield doPost("/users/logout");
+    yield doPost("/user/logout");
     yield put(logOutSuccess());
     // window.location = '/';
     // window.location.reload();
@@ -64,10 +64,10 @@ function* doLogOut() {
 
 function* getCurrentUser({ history, redirectUrl }) {
   try {
-    const response = yield doGet("/users/me");
+    const response = yield doGet("/user/me");
     yield put(getCurrentUserSuccess(response.data));
 
-    if (redirectUrl && redirectUrl !== "/") {
+    if (redirectUrl && redirectUrl !== "/home") {
       const { location } = history;
       if (location.search) {
         history.push(`${redirectUrl}${location.search}`);

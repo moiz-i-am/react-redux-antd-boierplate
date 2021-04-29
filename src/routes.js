@@ -1,13 +1,25 @@
 import React from "react";
 import { Switch, Route } from "react-router-dom";
 
-import { Login } from "./views";
+import CheckIfLoggedIn from "./Components/CheckIfLoggedIn/CheckIfLoggedIn";
+import PrivateRoute from "./Components/PrivateRoute/PrivateRoute";
+import GuestRoute from "./Components/GuestRoute/GuestRoute";
 
-const Routes = () => {
+import { Login, Home } from "./views";
+
+const Routes = (props) => {
   return (
-    <Switch>
-      <Route exact path="/login" component={Login} />
-    </Switch>
+    <CheckIfLoggedIn history={props.history}>
+      <Switch>
+        <PrivateRoute history={props.history} exact path="/" component={Home} />
+        <GuestRoute
+          history={props.history}
+          exact
+          path="/login"
+          component={Login}
+        />
+      </Switch>
+    </CheckIfLoggedIn>
   );
 };
 
