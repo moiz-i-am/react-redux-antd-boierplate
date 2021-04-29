@@ -1,0 +1,35 @@
+.loginFormForgot {
+  text-align: center;
+  margin-bottom: 5%;
+}
+.loginFormForgot a {
+  color: var(--Water);
+}
+.loginFormButton {
+  width: 100%;
+}
+.LoginFormCard {
+  max-width: 350px;
+}
+.LoginFormCard :global .ant-form-item {
+  margin-bottom: 20px;
+}
+.LoginFormCard :global .ant-input-prefix {
+  background-color: transparent;
+}
+.ant-card.LoginFormCard.ant-card-bordered {
+  border-radius: 10px;
+  width: 100%;
+  margin-top: 1%;
+  font-family: Averta Demo PE;
+}
+.ant-row.ant-form-item {
+  margin-bottom: 5px;
+}
+button.ant-btn.loginFormButton.ant-btn-primary {
+  font-family: Averta Demo PE;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 400;
+  height: 45px;
+}

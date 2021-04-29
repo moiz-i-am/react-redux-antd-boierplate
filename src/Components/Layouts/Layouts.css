@@ -1,0 +1,72 @@
+.Content {
+  align-items: center;
+  margin-top: 2%;
+}
+.UserAvatar :global .anticon {
+  min-width: unset;
+  margin-right: unset;
+  font-size: unset;
+}
+span.ant-avatar.UserAvatar.ant-avatar-circle.ant-avatar-icon {
+  margin-left: 10px;
+}
+span.ant-avatar.ant-avatar-circle.UserAvatar {
+  margin-left: 10px;
+  background-color: var(--GreenGray);
+  padding-top: 2px;
+}
+
+i.anticon.anticon-user {
+  margin: 0;
+}
+.logo {
+  height: 40px;
+  margin-top: -5px;
+}
+.logoText {
+  color: white !important;
+  margin-bottom: 13% !important;
+}
+.login {
+  float: right;
+}
+.login a {
+  color: #ffffff !important;
+}
+.login .loginIcon {
+  transition: transform 200ms ease 0s;
+  -ms-transform: translate(0px, 0px) scale(1);
+  transform: translate(0px, 0px) scale(1);
+}
+.login:hover .loginIcon {
+  transition: transform 200ms ease 0s;
+  -ms-transform: translate(2px, 0px) scale(1.4);
+  transform: translate(2px, 0px) scale(1.4);
+}
+
+li.ant-menu-item.logo-menu {
+  top: 10px !important;
+}
+/* ul.ant-menu.ant-menu-dark.ant-menu-root.ant-menu-horizontal {
+  background-color: #F1F6F9;
+}
+.ant-layout-header {
+  background-color: #F1F6F9 !important;
+} */
+
+.ant-menu-dark.ant-menu-horizontal > .ant-menu-item,
+.ant-menu-dark.ant-menu-horizontal > .ant-menu-submenu {
+  padding: 0 !important;
+}
+
+.ant-drawer-title {
+  margin: 0;
+  color: rgba(0, 0, 0, 0.85);
+  font-weight: 500;
+  font-family: 'Averta Demo PE';
+  font-size: 25px;
+  line-height: 22px;
+}
+.ant-drawer.ant-drawer-right.ant-drawer-open.notifications-drawer {
+  top: 70px;
+}
