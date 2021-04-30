@@ -5,13 +5,24 @@ import CheckIfLoggedIn from "./Components/CheckIfLoggedIn/CheckIfLoggedIn";
 import PrivateRoute from "./Components/PrivateRoute/PrivateRoute";
 import GuestRoute from "./Components/GuestRoute/GuestRoute";
 
-import { Login, Home } from "./views";
+import { Login, Home, Dashboard } from "./views";
 
 const Routes = (props) => {
   return (
     <CheckIfLoggedIn history={props.history}>
       <Switch>
-        <PrivateRoute history={props.history} exact path="/" component={Home} />
+        <PrivateRoute
+          history={props.history}
+          exact
+          path="/dashboard"
+          component={Dashboard}
+        />
+        <GuestRoute
+          history={props.history}
+          exact
+          path="/home"
+          component={Home}
+        />
         <GuestRoute
           history={props.history}
           exact

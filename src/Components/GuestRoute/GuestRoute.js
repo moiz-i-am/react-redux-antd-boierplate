@@ -9,7 +9,9 @@ const GuestRoute = ({ component: Component, loggedIn, user, ...rest }) => {
       {...rest}
       render={(props) =>
         loggedIn ? (
-          <Redirect to={{ pathname: "/", state: { from: props.location } }} />
+          <Redirect
+            to={{ pathname: "/dashboard", state: { from: props.location } }}
+          />
         ) : (
           <Component {...props} />
         )
