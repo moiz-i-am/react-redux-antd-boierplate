@@ -1,13 +1,34 @@
+import React from "react";
+import PropTypes from "prop-types";
+import { connect } from "react-redux";
+import { bindActionCreators } from "redux";
 import { withRouter } from "react-router-dom";
 
 import "antd/dist/antd.css";
 
-function App(props) {
+import * as userActions from "./actionCreators/User";
+
+function App({ children, getCurrentUser }) {
+  React.useEffect(() => {
+    getCurrentUser();
+  }, []);
+
   return (
     <div className="App">
-      <main>{props.children}</main>
+      <main>{children}</main>
     </div>
   );
 }
 
-export default withRouter(App);
+const mapStateToProps = ({ user }) => ({ user });
+
+const mapDispatchToProps = (dispatch) => ({
+  getCurrentUser: bindActionCreators(userActions.getCurrentUser, dispatch),
+});
+
+App.propTypes = {
+  user: PropTypes.object.isRequired,
+  getCurrentUser: PropTypes.func.isRequired,
+};
+
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(App));
