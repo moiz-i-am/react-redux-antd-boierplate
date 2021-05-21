@@ -115,16 +115,19 @@ const userReducer = (
         loading: false,
         type,
         payload,
+        loggedIn: true,
         currentUser: {
           ...state.currentUser,
+          data: data,
           loading: false,
-          data,
         },
       };
+    // return console.log("data in redux me =======++> ", data);
 
     case "GET_CURRENT_USER_FAIL":
       return {
         ...state,
+        loggedIn: false,
         currentUser: {
           ...state.currentUser,
           loading: false,

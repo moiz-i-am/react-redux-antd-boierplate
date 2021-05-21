@@ -1,26 +1,30 @@
-import React, { Component } from "react";
+import React from "react";
 import { Menu, message } from "antd";
 import { HomeFilled, LoginOutlined } from "@ant-design/icons";
-import { withRouter } from "react-router-dom";
+import { withRouter, Link } from "react-router-dom";
+import PropTypes from "prop-types";
+import { connect } from "react-redux";
+import { bindActionCreators } from "redux";
+
+import * as userActions from "../../../../actionCreators/User";
+
 import "./style/index.less";
 
-const Sidebar = (props) => {
+const Sidebar = ({ history, mode, logOut }) => {
   const handleClick = (e) => {
     switch (e.key) {
-      case "dashboard":
-        this.props.history.push("/dashboard");
-        break;
       case "logout":
-        logOut();
+        handleLogOut();
         break;
       default:
         return;
     }
   };
 
-  const logOut = () => {
+  const handleLogOut = () => {
+    logOut();
+    history.push("/login");
     message.success("You are successfully logout.");
-    props.history.push("/login");
   };
 
   return (
@@ -28,15 +32,19 @@ const Sidebar = (props) => {
       <div className="logo" />
       <Menu
         theme="dark"
-        mode={props.mode}
+        mode={mode}
         defaultSelectedKeys={["dashboard"]}
         onClick={handleClick}
       >
         <Menu.Item key="dashboard">
-          <span>
-            <HomeFilled />
-            <span className="nav-text">Dashboard</span>
-          </span>
+          <HomeFilled />
+          <span>Dashboard</span>
+          <Link to="/" />
+        </Menu.Item>
+        <Menu.Item key="home">
+          <HomeFilled />
+          <span>Home</span>
+          <Link to="/home" />
         </Menu.Item>
         <Menu.Item key="logout">
           <span>
@@ -49,4 +57,14 @@ const Sidebar = (props) => {
   );
 };
 
-export default withRouter(Sidebar);
+const mapStateToProps = ({ user }) => ({ user });
+
+const mapDispatchToProps = (dispatch) => ({
+  logOut: bindActionCreators(userActions.logOut, dispatch),
+});
+
+Sidebar.propTypes = {
+  logOut: PropTypes.func.isRequired,
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Sidebar);

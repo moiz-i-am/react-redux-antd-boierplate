@@ -29,6 +29,12 @@ function* doLogIn({ obj, history, redirectUrl }) {
     const response = yield doPost("/user/login", obj);
     yield put(logInSuccess(response.data));
 
+    let token = response.data.token;
+    token = JSON.stringify(token);
+    console.log(token);
+    localStorage.setItem("access-token", token);
+    // setAuthToken(token);
+
     if (redirectUrl) {
       history.push(redirectUrl);
     } else {
@@ -55,26 +61,19 @@ function* doLogOut() {
   try {
     yield doPost("/user/logout");
     yield put(logOutSuccess());
-    // window.location = '/';
+    localStorage.removeItem("access-token");
+    window.location = "/login";
     // window.location.reload();
   } catch (err) {
     yield put(logOutFail(err.response.data.message));
   }
 }
 
-function* getCurrentUser({ history, redirectUrl }) {
+function* getCurrentUser() {
   try {
     const response = yield doGet("/user/me");
+    console.log("response data =====+> ", response.data);
     yield put(getCurrentUserSuccess(response.data));
-
-    if (redirectUrl && redirectUrl !== "/home") {
-      const { location } = history;
-      if (location.search) {
-        history.push(`${redirectUrl}${location.search}`);
-      } else {
-        history.push(redirectUrl);
-      }
-    }
   } catch (err) {
     yield put(getCurrentUserFail(err.message));
   }

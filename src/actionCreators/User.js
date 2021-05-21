@@ -45,12 +45,8 @@ export const logOutFail = (error) => ({
   error,
 });
 
-
-export const getCurrentUser = (obj, history, redirectUrl) => ({
+export const getCurrentUser = () => ({
   type: "GET_CURRENT_USER",
-  obj,
-  history,
-  redirectUrl,
 });
 
 export const getCurrentUserSuccess = (data) => ({

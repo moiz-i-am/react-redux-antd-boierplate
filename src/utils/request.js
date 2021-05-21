@@ -10,6 +10,9 @@ export const doGet = (path) =>
       baseURL,
       method: "GET",
       withCredentials: true,
+      headers: {
+        "access-token": JSON.parse(localStorage.getItem("access-token")),
+      },
     })
       .then((result) => resolve(result))
       .catch((err) => {
@@ -39,6 +42,9 @@ export const doPost = (path, data) =>
         "Content-Type": "application/json",
       },
       data,
+      headers: {
+        "access-token": JSON.parse(localStorage.getItem("access-token")),
+      },
     })
       .then((result) => resolve(result))
       .catch((err) => {
@@ -59,6 +65,9 @@ export const doDelete = (path) =>
       baseURL,
       method: "DELETE",
       withCredentials: true,
+      headers: {
+        "access-token": JSON.parse(localStorage.getItem("access-token")),
+      },
     })
       .then((result) => resolve(result))
       .catch((err) => {

@@ -1,11 +1,11 @@
-import React, {Component} from 'react';
+import React from "react";
 
-export default class Dashboard extends Component {
-    render() {
-        return (
-            <div style={{padding: 24, background: '#fff', minHeight: 500}}>
-                Welcome :)
-            </div>
-        )
-    }
-}
+const Dashboard = () => {
+  return (
+    <div style={{ padding: 24, background: "#fff", minHeight: 500 }}>
+      Welcome
+    </div>
+  );
+};
+
+export default Dashboard;

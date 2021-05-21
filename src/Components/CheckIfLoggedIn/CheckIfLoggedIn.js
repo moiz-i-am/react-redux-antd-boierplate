@@ -28,13 +28,13 @@ const CheckIfLoggedIn = (props) => {
     return <Spin />;
   }
 
-  if (state.data) {
-    props.setFirstAuthState(true, state.data);
-  }
+  // if (state.data) {
+  //   props.setFirstAuthState(true, state.data);
+  // }
 
-  if (state.error) {
-    props.setFirstAuthState(false, null);
-  }
+  // if (state.error) {
+  //   props.setFirstAuthState(false, null);
+  // }
 
   return props.children;
 };

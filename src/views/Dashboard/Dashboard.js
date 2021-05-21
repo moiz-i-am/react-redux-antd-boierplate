@@ -1,9 +1,11 @@
 import React from "react";
-import { withRouter, Route } from "react-router";
-import { Layout, Breadcrumb, Icon } from "antd";
+import { withRouter } from "react-router";
+import { Layout } from "antd";
+import { BrowserRouter as Router, Route } from "react-router-dom";
 
 import Dashboard from "../../Components/dashboard";
 import Sidebar from "./Components/sidebar/index";
+import Home from "../Home/Home";
 
 const { Sider, Content } = Layout;
 
@@ -24,16 +26,19 @@ const DashboardPage = (props) => {
   };
 
   return (
-    <Layout style={{ minHeight: minHeight }}>
-      <Sider collapsible collapsed={collapsed} onCollapse={onCollapse}>
-        <Sidebar mode={mode} />
-      </Sider>
-      <Layout>
-        <Content style={{ margin: "0 16px", position: "relative" }}>
-          <Dashboard />
-        </Content>
+    <Router>
+      <Layout style={{ minHeight: minHeight }}>
+        <Sider collapsible collapsed={collapsed} onCollapse={onCollapse}>
+          <Sidebar mode={mode} />
+        </Sider>
+        <Layout>
+          <Content style={{ margin: "0 16px", position: "relative" }}>
+            <Route exact path="/" component={Dashboard} />
+            <Route path="/home" component={Home} />
+          </Content>
+        </Layout>
       </Layout>
-    </Layout>
+    </Router>
   );
 };
 
