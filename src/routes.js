@@ -11,7 +11,12 @@ const Routes = (props) => {
   return (
     <CheckIfLoggedIn history={props.history}>
       <Switch>
-        <Route history={props.history} exact path="/" component={Dashboard} />
+        <PrivateRoute
+          history={props.history}
+          exact
+          path="/"
+          component={Dashboard}
+        />
         <GuestRoute
           history={props.history}
           exact

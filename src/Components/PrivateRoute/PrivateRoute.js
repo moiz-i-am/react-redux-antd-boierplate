@@ -4,17 +4,6 @@ import { Route, Redirect } from "react-router-dom";
 import { connect } from "react-redux";
 
 const PrivateRoute = ({ component: Component, loggedIn, user, ...rest }) => {
-  // const [userData, setUserData] = React.useState();
-  // const [logged, setLogged] = React.useState(false);
-
-  // React.useEffect(() => {
-  //   setUserData(user.data);
-  //   setLogged(loggedIn);
-  // }, [user]);
-
-  console.log("loged in ===========> ", loggedIn);
-  console.log("user in private ===========> ", user);
-
   return (
     <Route
       {...rest}
@@ -22,7 +11,9 @@ const PrivateRoute = ({ component: Component, loggedIn, user, ...rest }) => {
         loggedIn ? (
           <Component {...props} />
         ) : (
-          <Redirect to={{ pathname: "/", state: { from: props.location } }} />
+          <Redirect
+            to={{ pathname: "/login", state: { from: props.location } }}
+          />
         )
       }
     />
