@@ -3,9 +3,9 @@ import { withRouter } from "react-router";
 import { Layout } from "antd";
 import { BrowserRouter as Router, Route } from "react-router-dom";
 
-import Dashboard from "../../Components/dashboard";
 import Sidebar from "./Components/sidebar/index";
-import Home from "../Home/Home";
+import Inspectors from "./Components/Inspectors";
+import Properties from "./Components/Properties/Properties";
 
 const { Sider, Content } = Layout;
 
@@ -33,8 +33,8 @@ const DashboardPage = (props) => {
         </Sider>
         <Layout>
           <Content style={{ margin: "0 16px", position: "relative" }}>
-            <Route exact path="/" component={Dashboard} />
-            <Route path="/home" component={Home} />
+            <Route exact path="/inspectors" component={Inspectors} />
+            <Route path="/properties" component={Properties} />
           </Content>
         </Layout>
       </Layout>

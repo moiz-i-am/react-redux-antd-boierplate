@@ -4,9 +4,9 @@ import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 import { withRouter } from "react-router-dom";
 
-import "antd/dist/antd.css";
-
 import * as userActions from "./actionCreators/User";
+
+import "antd/dist/antd.css";
 
 function App({ children, getCurrentUser }) {
   React.useEffect(() => {

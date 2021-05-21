@@ -5,7 +5,9 @@ import CheckIfLoggedIn from "./Components/CheckIfLoggedIn/CheckIfLoggedIn";
 import PrivateRoute from "./Components/PrivateRoute/PrivateRoute";
 import GuestRoute from "./Components/GuestRoute/GuestRoute";
 
-import { Login, Home, Dashboard } from "./views";
+import { Login, Dashboard } from "./views";
+import Inspectors from "./views/Dashboard/Components/Inspectors";
+import Properties from "./views/Dashboard/Components/Properties/Properties";
 
 const Routes = (props) => {
   return (
@@ -17,11 +19,17 @@ const Routes = (props) => {
           path="/"
           component={Dashboard}
         />
-        <GuestRoute
+        <PrivateRoute
           history={props.history}
           exact
-          path="/home"
-          component={Home}
+          path="/inspectors"
+          component={Inspectors}
+        />
+        <PrivateRoute
+          history={props.history}
+          exact
+          path="/properties"
+          component={Properties}
         />
         <GuestRoute
           history={props.history}

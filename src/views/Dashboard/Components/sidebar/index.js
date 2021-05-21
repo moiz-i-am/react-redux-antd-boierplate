@@ -1,6 +1,6 @@
 import React from "react";
 import { Menu, message } from "antd";
-import { HomeFilled, LoginOutlined } from "@ant-design/icons";
+import { HomeFilled, LoginOutlined, TeamOutlined } from "@ant-design/icons";
 import { withRouter, Link } from "react-router-dom";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
@@ -33,18 +33,18 @@ const Sidebar = ({ history, mode, logOut }) => {
       <Menu
         theme="dark"
         mode={mode}
-        defaultSelectedKeys={["dashboard"]}
+        defaultSelectedKeys={["inspectors"]}
         onClick={handleClick}
       >
-        <Menu.Item key="dashboard">
-          <HomeFilled />
-          <span>Dashboard</span>
-          <Link to="/" />
+        <Menu.Item key="inspectors">
+          <TeamOutlined />
+          <span>Tax Inspectors</span>
+          <Link to="/inspectors" />
         </Menu.Item>
-        <Menu.Item key="home">
+        <Menu.Item key="properties">
           <HomeFilled />
-          <span>Home</span>
-          <Link to="/home" />
+          <span>Properties</span>
+          <Link to="/properties" />
         </Menu.Item>
         <Menu.Item key="logout">
           <span>
